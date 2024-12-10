@@ -16,4 +16,5 @@ Imports:
 Encoding: UTF-8
 Title: AdvancedR3
 Suggests: 
+    gitcreds,
     usethis

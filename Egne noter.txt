@@ -1,2 +1,3 @@
-For at undgå at skrive 
-usethis::use_package all the time - så skal du indsætte usethis::use_usethis() i konsollen. 
+Suggest: usethis
+    - For at undgå at skrive usethis::use_package all the time - så skal du indsætte usethis::use_usethis() i konsollen.
+
