@@ -12,7 +12,8 @@ Imports:
     rmarkdown,
     snakecase,
     stringr,
-    tidyr,
-    usethis
+    tidyr
 Encoding: UTF-8
 Title: AdvancedR3
+Suggests: 
+    usethis
