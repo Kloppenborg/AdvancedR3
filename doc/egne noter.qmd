@@ -25,3 +25,15 @@ Now add the target package
 ```{r}
 targets::use_targets()
 ```
+
+For tidyverse and tidy models use: This is due to the meta package
+status that these two package are.
+
+```{r}
+use_package("tidyverse", "depends")
+```
+
+The code is written to communicate to other people (collaborators),
+thats why we use the "depeds", "imports" etc. To specify and communicate
+with collaboraters.
+
