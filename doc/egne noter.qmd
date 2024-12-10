@@ -14,9 +14,14 @@ usethis::use_usethis()
 Go to tools –\> projec options –\> Rmarkdown –\> change write canonical
 ... to true and Automatic text wrapping ... to "column"
 
-```{r}
+Add the "targets package"
 
+```{r}
+use_package("targets")
 ```
 
-The `echo: false` option disables the printing of code (only output is
-displayed).
+Now add the target package
+
+```{r}
+targets::use_targets()
+```
