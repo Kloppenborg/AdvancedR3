@@ -18,3 +18,5 @@ Title: AdvancedR3
 Suggests: 
     gitcreds,
     usethis
+URL: https://github.com/Kloppenborg/AdvancedR3
+BugReports: https://github.com/Kloppenborg/AdvancedR3/issues
