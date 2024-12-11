@@ -90,7 +90,7 @@ create_model_workflow <- function(model_specs, recipe_specs) {
 }
 
 
-#'Ceate a tidyoutput of the model results
+#'Ceate a tidy output of the model results
 #'
 #' @param workflow_fitted_model The model workflow object that has been fitted
 #'

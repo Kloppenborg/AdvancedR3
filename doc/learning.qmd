@@ -68,24 +68,8 @@ model_workflow <- create_model_workflow(
         set_engine("glm"),
     lipidomics_wide %>% 
         create_recipe_spec(metabolite_cholesterol)
-)
+) %>% fit(lipidomics_wide) %>% 
+    tidy_model_output()
 
 model_workflow
-```
-
-## Run the workflow model on data
-
-```{r}
-fitted_model <- model_workflow %>% 
-    fit(lipidomics_wide)
-
-fitted_model
-```
-
-## Generate tidy format output
-
-```{r}
-fitted_model %>% 
-    extract_fit_parsnip() %>% 
-    broom::tidy(exponentiate = TRUE)
 ```
