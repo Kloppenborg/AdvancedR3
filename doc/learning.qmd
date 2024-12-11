@@ -39,11 +39,31 @@ log_reg_specs
 
 ```{r}
 lipidomics %>%
-  mutate(metabolite = snakecase::to_snake_case(metabolite)) %>%
+  column_values_to_snake_case(metabolite) %>%
   pivot_wider(
     names_from = metabolite,
     values_from = value,
     values_fn = mean,
     names_prefix = "metabolite_"
   )
+```
+
+Make a function for the pivot wider part
+
+```{r}
+#' Function to pivot lipidomics data from long into wide, using snakecase formated column names
+#'
+#' @param data Lipidomics
+#'
+#' @return A wide data frame with 1 obs for each participants
+
+metabolites_to_wider <- function(data) {
+    data %>% 
+        tidyr::pivot_wider(
+            names_from = metabolite,
+            values_from = value,
+            values_fn = mean,
+            names_prefix = "metabolite_")
+}
+testing_data %>% metabolites_to_wider()
 ```
