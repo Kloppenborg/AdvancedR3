@@ -62,18 +62,16 @@ workflow() %>%
 ## Createworkflow function
 
 ```{r}
-#' Create a workflow object ofthe model and transformation
-#'
-#' @param model_specs The model specs
-#' @param recipe_specs The recipe specs
-#'
-#' @return A workflow object
+model_workflow <- create_model_workflow(
+    logistic_reg() %>% 
+        set_engine("glm"),
+    lipidomics_wide %>% 
+        create_recipe_spec(metabolite_cholesterol)
+)
 
-create_model_workflow <- function(model_specs, recipe_specs) {
-    workflows::workflow() %>% 
-        workflows::add_model(model_specs) %>% 
-        workflows::add_recipe(recipe_specs)
-}
+model_workflow
+```
 
-create_model_workflow(log_reg_specs, recipe_specs)
+```{r}
+
 ```
