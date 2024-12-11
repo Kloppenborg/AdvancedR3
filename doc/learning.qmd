@@ -10,6 +10,7 @@ targets::tar_config_set(store = here::here("_targets"))
 library(tidyverse)
 library(targets)
 library(tidymodels)
+library(broom)
 source(here::here("R/functions.R"))
 lipidomics <- tar_read(lipidomics) # Here we refer to the object lipidomics in the _target file
 ```
@@ -72,6 +73,19 @@ model_workflow <- create_model_workflow(
 model_workflow
 ```
 
-```{r}
+## Run the workflow model on data
 
+```{r}
+fitted_model <- model_workflow %>% 
+    fit(lipidomics_wide)
+
+fitted_model
+```
+
+## Generate tidy format output
+
+```{r}
+fitted_model %>% 
+    extract_fit_parsnip() %>% 
+    broom::tidy(exponentiate = TRUE)
 ```
