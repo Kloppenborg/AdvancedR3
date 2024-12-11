@@ -66,3 +66,17 @@ descriptive_stats <- function(data) {
 
 descriptive_stats(lipidomics)
 ```
+
+##Using the \_target package
+
+```{r}
+#To run the target file go to console and run
+targets::tar_make()
+
+#To visualize the pipeline in te target file run
+targets::tar_visnetwork()
+
+#To check if we need any updates run
+targets::tar_outdated()
+
+```
