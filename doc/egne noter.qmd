@@ -37,3 +37,32 @@ The code is written to communicate to other people (collaborators),
 thats why we use the "depeds", "imports" etc. To specify and communicate
 with collaboraters.
 
+## Basic statistics (Table 1)
+
+```{r}
+lipidomics %>%
+  group_by(metabolite) %>%
+  summarise(across(
+    value,
+    list(
+      mean = mean,
+      sd = sd
+    )
+  )) %>%
+  mutate(across(
+    where(is.numeric),
+    ~ round(.x, digits = 1)
+  ))
+```
+
+## Convert the above into a function
+
+```{r}
+descriptive_stats <- function(data) {
+    data %>% dplyr::group_by(metabolite) %>% 
+  dplyr::summarise(dplyr::across(value, list(mean = mean, sd = sd))) %>% 
+  dplyr::mutate(dplyr::across(tidyselect::where(is.numeric), ~ round(.x, digits = 1)))
+}
+
+descriptive_stats(lipidomics)
+```
