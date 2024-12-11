@@ -9,6 +9,7 @@ editor: visual
 targets::tar_config_set(store = here::here("_targets"))
 library(tidyverse)
 library(targets)
+library(tidymodels)
 source(here::here("R/functions.R"))
 lipidomics <- tar_read(lipidomics) # Here we refer to the object lipidomics in the _target file
 
