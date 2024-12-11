@@ -17,8 +17,6 @@ lipidomics <- tar_read(lipidomics) # Here we refer to the object lipidomics in t
 ## Results
 
 ```{r}
-
-
 targets::tar_read(df_stats_by_metabolite) %>% 
   mutate(MeanSD = glue::glue("{value_mean} ({value_sd})")) %>% 
   select(Metabolite = metabolite, `Mean SD` = MeanSD) %>% 
