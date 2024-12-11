@@ -6,40 +6,20 @@ editor: visual
 ---
 
 ```{r setup}
-#| include: false
+targets::tar_config_set(store = here::here("_targets"))
 library(tidyverse)
+library(targets)
 source(here::here("R/functions.R"))
-lipidomics <- read_csv(here::here("data/lipidomics.csv"))
+lipidomics <- tar_read(lipidomics) # Here we refer to the object lipidomics in the _target file
+
 ```
 
-## Basic statistics (Table 1)
+## Results
 
 ```{r}
-descriptive_stats(lipidomics)
+tar_read(df_stats_by_metabolite)
 ```
 
-## Figure outputs
-
 ```{r}
-ggplot(data = lipidomics, aes(x = value)) +
-  geom_histogram() +
-  facet_wrap(vars(metabolite), scales = "free")
-```
-
-## Convert the above into a function
-
-```{r}
-#' Plot for basic distribution of metabolites
-#'
-#' @param data The lipidomics dataset
-#'
-#' @return A Histogram with the GGplot2 package
-#'
-plot_distributions <- function(data) {
-  ggplot2::ggplot(data, aes(x = value)) +
-    ggplot2::geom_histogram() +
-    ggplot2::facet_wrap(ggplot2::vars(metabolite), scales = "free")
-}
-
-plot_distribution(lipidomics)
+tar_read(fig_metabolite_distribution)
 ```

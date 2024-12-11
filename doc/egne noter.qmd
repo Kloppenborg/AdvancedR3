@@ -80,3 +80,9 @@ targets::tar_visnetwork()
 targets::tar_outdated()
 
 ```
+
+## Important to add the \_targets.yaml file to the gitignore file
+
+```{r}
+use_git_ignore("_targets.yaml")
+```
