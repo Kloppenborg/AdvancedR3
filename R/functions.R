@@ -114,3 +114,19 @@ split_by_metabolite <- function(data) {
     dplyr::group_split(metabolite) %>%
     purrr::map(metabolites_to_wider)
 }
+
+#' Generate the results of a model
+#'
+#' @param data The lipidomics
+#'
+#' @return A data frame
+generate_model_results <- function(data) {
+  create_model_workflow(
+    parsnip::logistic_reg() %>%
+      parsnip::set_engine("glm"),
+    data %>%
+      create_recipe_spec(tidyselect::starts_with("metabolite_"))
+  ) %>%
+    parsnip::fit(data) %>%
+    tidy_model_output()
+}

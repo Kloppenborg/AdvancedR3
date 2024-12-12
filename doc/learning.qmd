@@ -37,26 +37,12 @@ lipidomics_wide <- lipidomics %>%
 lipidomics_wide
 ```
 
-## Create workflow function
-
-```{r}
-model_workflow <- create_model_workflow(
-  logistic_reg() %>%
-    set_engine("glm"),
-  lipidomics_wide %>%
-    create_recipe_spec(metabolite_cholesterol)
-) %>%
-  fit(lipidomics_wide) %>%
-  tidy_model_output()
-
-model_workflow
-```
-
 ## Running multiple models
 
 ```{r}
 lipidomics %>%
-  column_values_to_snake_case(metabolite) %>%
-  group_split(metabolite) %>%
-  map(metabolites_to_wider)
+  split_by_metabolite() %>%
+  map(generate_model_results)
 ```
+
+## 
