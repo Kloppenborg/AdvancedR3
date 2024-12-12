@@ -51,7 +51,8 @@ metabolites_to_wider <- function(data) {
       names_from = metabolite,
       values_from = value,
       values_fn = mean,
-      names_prefix = "metabolite_")
+      names_prefix = "metabolite_"
+    )
 }
 
 #' A transformtion recipe to preprocess the data
@@ -64,12 +65,12 @@ metabolites_to_wider <- function(data) {
 create_recipe_spec <- function(data, metabolite_variable) {
   recipes::recipe(data) %>%
     recipes::update_role({{ metabolite_variable }},
-                         age,
-                         gender,
-                         new_role = "predictor"
+      age,
+      gender,
+      new_role = "predictor"
     ) %>%
     recipes::update_role(class,
-                         new_role = "outcome"
+      new_role = "outcome"
     ) %>%
     recipes::step_normalize(
       tidyselect::starts_with("metabolite_")
@@ -90,7 +91,7 @@ create_model_workflow <- function(model_specs, recipe_specs) {
 }
 
 
-#'Ceate a tidy output of the model results
+#' Ceate a tidy output of the model results
 #'
 #' @param workflow_fitted_model The model workflow object that has been fitted
 #'
@@ -100,4 +101,16 @@ tidy_model_output <- function(workflow_fitted_model) {
   workflow_fitted_model %>%
     workflows::extract_fit_parsnip() %>%
     broom::tidy(exponentiate = TRUE)
+}
+
+#' Convert long format df into af list of wid form df
+#'
+#' @param data The lipidomics dataset
+#'
+#' @return A list of data frames
+split_by_metabolite <- function(data) {
+  data %>%
+    column_values_to_snake_case(metabolite) %>%
+    dplyr::group_split(metabolite) %>%
+    purrr::map(metabolites_to_wider)
 }
