@@ -28,14 +28,6 @@ targets::tar_read(df_stats_by_metabolite) %>%
 tar_read(fig_metabolite_distribution)
 ```
 
-## Building the model
-
-```{r}
-log_reg_specs <- logistic_reg() %>%
-  set_engine("glm")
-log_reg_specs
-```
-
 ## Pivot data into a wide format
 
 ```{r}
@@ -43,21 +35,6 @@ lipidomics_wide <- lipidomics %>%
   column_values_to_snake_case(metabolite) %>%
   metabolites_to_wider()
 lipidomics_wide
-```
-
-```{r}
-recipe_specs <- lipidomics_wide %>% 
-    create_recipe_spec(metabolite_cholesterol)
-recipe_specs
-```
-
-##Workflow package
-
-```{r}
-workflow() %>% 
-    add_model(log_reg_specs) %>%
-    add_recipe(recipe_specs) 
-
 ```
 
 ## Createworkflow function
