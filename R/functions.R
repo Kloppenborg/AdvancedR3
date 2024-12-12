@@ -149,5 +149,23 @@ calculate_estimates <- function(data) {
     dplyr::mutate(term = stringr::str_c("metabolite_", term)) %>%
     dplyr::distinct(metabolite, term) %>%
     dplyr::right_join(model_estimates, by = "term") %>%
-    select(-term)
+    dplyr::select(-term)
+}
+
+
+#' Plot a pointrange plot with results
+#'
+#' @param results model_estimates
+#'
+#' @return A ggplot object
+plot_estimates <- function(results) {
+  results %>%
+  ggplot2::ggplot(ggplot2::aes(
+    x = estimate,
+    y = metabolite,
+    xmin = estimate - std.error,
+    xmax = estimate + std.error
+  )) +
+  ggplot2::geom_pointrange() +
+  ggplot2::coord_fixed(xlim = c(0, 5))
 }

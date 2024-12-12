@@ -1,18 +1,20 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|d866845abf1d81d9|||||||||||||||
-calculate_estimates|function|5a0d9aed4d84aa5a|||||||||||||||
+.Random.seed|object|44b06970901dc471|||||||||||||||
+calculate_estimates|function|f5fd1c1ff6183e02|||||||||||||||
 column_values_to_snake_case|function|1cbcfee90352cf60|||||||||||||||
 create_model_workflow|function|b1c4ccb7cbf5f62a|||||||||||||||
 create_recipe_spec|function|e2c69062d3a5c353|||||||||||||||
 descriptive_stats|function|a4a625591d547409|||||||||||||||
-df_model_estimates|stem|5b80a5118d231145|2954b8877e0c4723|bd26e401cddabaf1|791794764||t20069.416427814s|c82e672d71948923|1038|rds|local|vector|||5.75|glm.fit algorithm did not converge. glm.fit fitted probabilities numerically 0 or 1 occurred. glm.fit fitted probabilities numerically 0 or 1 occurred|
+df_model_estimates|stem|b58bbb2fd8d691a5|2954b8877e0c4723|3e9b6176067f5405|791794764||t20069.4249235632s|3d028c19cbfaff4b|927|rds|local|vector|||4.72|glm.fit algorithm did not converge. glm.fit fitted probabilities numerically 0 or 1 occurred. glm.fit fitted probabilities numerically 0 or 1 occurred|
 df_stats_by_metabolite|stem|f31150c91fe28bcd|ce15a181d02b2e03|172dcf9aad3b0ea6|519715527||t20068.3475588695s|a2f85ca40321daf5|403|rds|local|vector|||0.17||
 fig_metabolite_distribution|stem|64b71b939d388967|86673d84fb1f96ff|4244973e03cf06cf|1599393873||t20068.3988458914s|4494c89129f0b55f|137242|rds|local|vector|||0.12||
+fig_model_estimates|stem|c41207539b682e4e|0aecb63566eb4f88|c2a9a5f1df50c5c2|-1593939164||t20069.4364364486s|836674f9b30346a3|99989|rds|local|vector|||0.29||
 file|stem|f6bf5a5688fb274f|09442fac263aded2|2c530c1562a7fbd1|1735323524|data/lipidomics.csv|t20038.5333106639s|2ec1867e6b7db575|24313|file|local|vector|||0.02||
 generate_model_results|function|36b3832cca0d023d|||||||||||||||
 lipidomics|stem|65a50387c837cc7a|0adf46d83f39a429|f0e124423009cc2f|-1498393010||t20068.3562253575s|5efea0df906539e6|4884|rds|local|vector|||0.28||
 metabolites_to_wider|function|190c8cc4b495bfea|||||||||||||||
 plot_distributions|function|b06f65993fa8d2d0|||||||||||||||
-quarto_doc|stem|90b442e8a9df7583|26b1e5e062d508a5|64907af20f6ebefd|1582462002|doc/learning.html*doc/learning.qmd|t20069.4166680711s|6a333fa02d3900cb|31969|file|local|vector|||20.86||
+plot_estimates|function|668cf95e0eddf973|||||||||||||||
+quarto_doc|stem|27296e32f35c63c4|06ba0eb29f98a325|13e1e0995a1544ae|1582462002|doc/learning.html*doc/learning.qmd|t20069.4377164657s|2d37a11d1b92f1fc|31002|file|local|vector|||21.84||
 split_by_metabolite|function|4e6de247c1cd600a|||||||||||||||
 tidy_model_output|function|411cd07bc2ec9eec|||||||||||||||

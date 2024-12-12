@@ -72,6 +72,10 @@ list(
     name = df_model_estimates,
     command = calculate_estimates(lipidomics)
   ),
+  tar_target(
+    name = fig_model_estimates,
+    command = plot_estimates(df_model_estimates)
+  ),
   tar_quarto(
     name = quarto_doc,
     path = "doc/learning.qmd"

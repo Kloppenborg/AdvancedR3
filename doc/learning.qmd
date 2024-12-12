@@ -34,14 +34,18 @@ tar_read(fig_metabolite_distribution)
 lipidomics_wide <- lipidomics %>%
   column_values_to_snake_case(metabolite) %>%
   metabolites_to_wider()
+
 lipidomics_wide
 ```
 
 ## Running multiple models
 
 ```{r}
-model_estimates <- lipidomics %>%
-  calculate_estimates()
+model_estimates <- tar_read(df_model_estimates)
+```
 
-model_estimates
+## Visualizing the model estimates
+
+```{r}
+tar_read(fig_model_estimates)
 ```
