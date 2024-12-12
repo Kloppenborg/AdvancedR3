@@ -37,16 +37,17 @@ lipidomics_wide <- lipidomics %>%
 lipidomics_wide
 ```
 
-## Createworkflow function
+## Create workflow function
 
 ```{r}
 model_workflow <- create_model_workflow(
-    logistic_reg() %>% 
-        set_engine("glm"),
-    lipidomics_wide %>% 
-        create_recipe_spec(metabolite_cholesterol)
-) %>% fit(lipidomics_wide) %>% 
-    tidy_model_output()
+  logistic_reg() %>%
+    set_engine("glm"),
+  lipidomics_wide %>%
+    create_recipe_spec(metabolite_cholesterol)
+) %>%
+  fit(lipidomics_wide) %>%
+  tidy_model_output()
 
 model_workflow
 ```
