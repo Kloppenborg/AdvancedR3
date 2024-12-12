@@ -42,7 +42,9 @@ lipidomics_wide
 ```{r}
 lipidomics %>%
   split_by_metabolite() %>%
-  map(generate_model_results)
+  map(generate_model_results) %>%
+  list_rbind() %>%
+  filter(str_detect(term, "metabolite_"))
 ```
 
 ## 
