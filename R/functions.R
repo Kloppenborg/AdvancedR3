@@ -148,5 +148,6 @@ calculate_estimates <- function(data) {
     column_values_to_snake_case(term) %>%
     dplyr::mutate(term = stringr::str_c("metabolite_", term)) %>%
     dplyr::distinct(metabolite, term) %>%
-    dplyr::right_join(model_estimates, by = "term")
+    dplyr::right_join(model_estimates, by = "term") %>%
+    select(-term)
 }
